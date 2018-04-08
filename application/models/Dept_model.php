@@ -7,10 +7,17 @@ class Dept_model extends CI_Model {
 		parent::__construct();
 		$this->id_admin=1;
 	}
+	//tambah tulisan di line 10
 
 	function tampil_dept()	{
 		$q = $this->db->get('dept');
 		return $q->result();
-	}
+	} 
+	//tambah tulisan di line 10
+
+	function tampil_dept()	{
+		$q = $this->db->get('dept');
+		return $q->result();
+	} 
 
 }
