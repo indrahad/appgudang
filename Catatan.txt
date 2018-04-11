@@ -1,0 +1,2 @@
+Catatan Pengembangan :
+1. pada laman Tambah Stok ditampilkan jumlah Stok Sebelumnya.

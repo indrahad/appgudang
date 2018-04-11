@@ -20,6 +20,30 @@
 				<label for="nmbrg"> Nama </label>
 				<input type="text" class="form-control" name="nmbrg" id="nmbrg" placeholder="Masukan Nama Barang" >	
 			</div>
+			<div class="form-group">
+				<label for="satuan"> Satuan </label>
+				<!-- <input type="text" class="form-control" name="satuan" id="satuan">	
+				<pre>
+					<?php 
+						print_r($list_satuan);
+					 ?>
+				</pre> -->
+				<select class="form-control" name="satuan" id="satuan">
+					<?php foreach ($list_satuan as $i => $row): ?>
+						<option value="<?php echo $row->id_satuan ?>">
+							<?php echo $row->nm_satuan ?>
+						</option>
+						<?php endforeach ?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="merk"> Merk </label>
+				<input type="text" class="form-control" name="merk" id="merk">	
+			</div>
+			<div class="form-group">
+				<label for="spesifikasi"> Spesifikasi </label>
+				<input type="text" class="form-control" name="spesifikasi" id="spesifikasi">	
+			</div>			
 			<div class="form-group">	
 			<label for="stok"> Stok </label>
 			<input type="number" class="form-control" name="stok" id="stok" placeholder="Jumlah Stok">

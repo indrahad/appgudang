@@ -3,30 +3,39 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Barang extends CI_Controller {
-
+	//function dapat berjalan ketika sudha di panggil di koding dibawah ini
 	function __construct(){
 		parent::__construct();
 
 		$this->load->model('Barang_model');
+		$this->load->model('Satuan_model');
 		// $this->output->enable_profiler(TRUE);
 	}
 
 	public function tampil()
 	{
+		//membuat array data dengan nama array list_barang
+		//class ini akan menuju barang model dan menggunakan function tampil_barang
 		$data['list_barang'] = $this->Barang_model->tampil_barang();
+		//class ini memproses data ke view dengan variabel barang_tampil dengan data dari $data
 		$this->load->view('barang_tampil', $data);
 	}
+	//membuat function
 	public function tambah(){
 		//memanggil view
-		$this->load->view('barang_tambah');
+		$data['list_satuan'] = $this->Satuan_model->tampil_satuan();
+		$this->load->view('barang_tambah', $data);
 	}
 	public function act_tambah() {
 		//mendapatkan post
 		$namabrg = $this->input->post('nmbrg');
+		$satuan = $this->input->post('satuan');
+		$merk = $this->input->post('merk');
+		$spesifikasi = $this->input->post('spesifikasi');
 		$stok = $this->input->post('stok');
 
 		// memanggil model tambah
-		$this->Barang_model->tambah_barang($namabrg, $stok);
+		$this->Barang_model->tambah_barang($namabrg, $satuan, $merk, $spesifikasi, $stok);
 
 		//arahkan ke tampil
 		redirect ('barang/tampil');

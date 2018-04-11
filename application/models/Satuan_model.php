@@ -1,7 +1,7 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dept_model extends CI_Model {
+class Satuan_model extends CI_Model {
 
 	function __construct(){
 		parent::__construct();
@@ -9,8 +9,8 @@ class Dept_model extends CI_Model {
 	}
 	//tambah tulisan di line 10
 
-	function tampil_dept()	{
-		$q = $this->db->get('dept');
+	function tampil_satuan(){
+		$q = $this->db->get('satuan');
 		return $q->result();
 	} 
 	

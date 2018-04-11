@@ -14,12 +14,20 @@ class Barang_model extends CI_Model {
 	}
 
 
-	function tambah_barang($nama, $stok)	{
+	function tambah_barang($nama, $satuan, $merk, $spesifikasi, $stok)	{
 		$insert['nm_barang'] = $nama;
+		$insert['satuan'] = $satuan;
+		$insert['merk'] = $merk;
+		$insert['spesifikasi'] = $spesifikasi;
 		$insert['stok'] = $stok;
+		$insert['stok_tidakdigunakan'] = $stok;
+		$insert['stok_digunakan'] = 0;
+
+		
 
 		$this->db->insert('barang', $insert);
 		$id_barang =  $this->db->insert_id();
+
 
 		//simpan ke tabel riwayat
 		$insert_riwayat['id_barang'] = $id_barang;
@@ -36,6 +44,7 @@ class Barang_model extends CI_Model {
 		// update tabel barang
 		$this->db->where('id_barang', $id_barang);
 		$this->db->set('stok', 'stok +' . $stok, FALSE);
+		$this->db->set('stok_tidakdigunakan', 'stok_tidakdigunakan+' . $stok, FALSE);
 		$this->db->update('barang');
 
 		$insert_riwayat['id_barang'] = $id_barang;
@@ -60,7 +69,8 @@ class Barang_model extends CI_Model {
 
 		// update tabel barang
 		$this->db->where('id_barang', $id_barang);
-		$this->db->set('stok', 'stok -' . $jml, FALSE);
+		$this->db->set('stok_tidakdigunakan', 'stok_tidakdigunakan-' . $jml, FALSE);
+		$this->db->set('stok_digunakan', 'stok_digunakan+' . $jml, FALSE);
 		$this->db->update('barang');
 
 		$insert_riwayat['id_barang'] = $id_barang;
