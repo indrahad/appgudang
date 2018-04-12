@@ -58,7 +58,7 @@ class Barang_model extends CI_Model {
 
 	function ambil_barang ($id_dept, $id_barang, $jml)	{
 
-		// simpak ke tabel ambilbrng
+		// simpan ke tabel ambilbrng
 		$insert_ambil['id_dept'] = $id_dept;
 		$insert_ambil['id_barang'] = $id_barang;
 		$insert_ambil['jml'] = $jml;
@@ -97,5 +97,18 @@ class Barang_model extends CI_Model {
 		$q = $this->db->get('ambilbrng');
 		return $q->result();
 	}
+
+
+	//function cek stok barang
+	function get_stok_tidakdigunakan($kode_barang){
+		//Query Ambil Stok
+		$this->db->where('id_barang', $kode_barang);
+		$q = $this->db->get('barang');
+
+		//kembalikan nilai $stok_tidakdigunakan
+		return $q->row('stok_tidakdigunakan');
+
+	}
+
 }
 

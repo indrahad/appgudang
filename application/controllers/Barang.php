@@ -73,9 +73,16 @@ class Barang extends CI_Controller {
 		$id_dept = $this->input->post('dept');
 		$id_barang = $this->input->post('barang');
 		$jumlah = $this->input->post('jumlah');
+		$stok_saatini = $this->Barang_model->get_stok_tidakdigunakan($id_barang);
 
-		// memanggil model tambah
-		$this->Barang_model->ambil_barang($id_dept, $id_barang, $jumlah);
+		//Cek untuk jumlah barang
+		if ($jumlah >  $stok_saatini) {
+			echo "Stok Barang Tidak";
+			exit();
+		} else {
+			// memanggil model tambah
+			$this->Barang_model->ambil_barang($id_dept, $id_barang, $jumlah);
+		}
 
 		//arahkan ke tampil
 		redirect ('barang/tampil');
@@ -85,7 +92,7 @@ class Barang extends CI_Controller {
 
 		//memanggil model tampil riwayat()
 		$data['list_riwayat'] = $this->Barang_model->tampil_riwayat($id_barang);
-
+		//load ke view
 		$this->load->view('barang_riwayat_stok', $data);
 		
 	}

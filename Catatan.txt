@@ -1,2 +1,5 @@
 Catatan Pengembangan :
 1. pada laman Tambah Stok ditampilkan jumlah Stok Sebelumnya.
+2. Pada Laman Tambah Stok diberikan TOmbol Kembali ke tampil barang.
+3. Pada Laman Ambil Barang di tampilkan Stok barang saat INi
+4. Pada Laman Ambil Barang ada Pengecekan apakah pengambilan barang melebihi stok tidak?
