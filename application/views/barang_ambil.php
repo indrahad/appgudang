@@ -27,9 +27,15 @@
 				<label for="barang"> Barang</label>
 				<select class="form-control" name="barang" id="barang">
 					<?php foreach ($list_barang as $i => $row): ?>
-						<option value="<?php echo $row->id_barang?>">
-							<?php echo $row->nm_barang ?>
+						<?php if ($row->stok_tidakdigunakan == 0): ?>
+						<option value="<?php echo $row->id_barang?>" disabled>
+							<?php echo $row->nm_barang ?> (Habis)
 						</option>
+						<?php else: ?>
+						<option value="<?php echo $row->id_barang?>">
+							<?php echo $row->nm_barang ?> (<?php echo $row->stok_tidakdigunakan ?>)
+						</option>
+						<?php endif ?>
 					<?php endforeach ?>
 				</select>
 				<label for="jumlah"> Jumlah </label>
