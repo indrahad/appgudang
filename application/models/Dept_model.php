@@ -12,6 +12,5 @@ class Dept_model extends CI_Model {
 	function tampil_dept()	{
 		$q = $this->db->get('dept');
 		return $q->result();
-	} 
-	
+}	
 }

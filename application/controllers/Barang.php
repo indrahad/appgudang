@@ -73,18 +73,19 @@ class Barang extends CI_Controller {
 		$id_dept = $this->input->post('dept');
 		$id_barang = $this->input->post('barang');
 		$jumlah = $this->input->post('jumlah');
+		//membuat variabel $stok saat ini utk menampung value dari function model get_stok_tidakdigunakan
 		$stok_saatini = $this->Barang_model->get_stok_tidakdigunakan($id_barang);
 
 		//Cek untuk jumlah barang
 		if ($jumlah >  $stok_saatini) {
-			echo "Stok Barang Tidak";
+			echo "Stok Barang Tidak Mencukupi";
 			exit();
 		} else {
 			// memanggil model tambah
 			$this->Barang_model->ambil_barang($id_dept, $id_barang, $jumlah);
 		}
-
 		//arahkan ke tampil
+
 		redirect ('barang/tampil');
 	}
 

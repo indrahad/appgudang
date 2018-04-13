@@ -110,5 +110,14 @@ class Barang_model extends CI_Model {
 
 	}
 
-}
+	//function menampilkan stok yang tersedia
+	function get_stok_ready ($kode){
+		//Query Ambil data ke database
+		$this->db->where('id_barang', $kode);
+		$q = $this->db->get('barang');
 
+		//Kembalikan nilai $
+	}
+
+}
+	

@@ -19,7 +19,8 @@
                 <tr>
                     <th scope="col">Kode Barang</th>
                     <th scope="col">Nama Barang</th>
-                    <th scope="col">Stok</th>
+                    <th scope="col">Stok awal</th>
+                    <th scope="col">Stok Tersedia</th>
                     <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                         <td scope="row"><?php echo 'BHP-' . str_pad($row->id_barang, 6, 0, STR_PAD_LEFT) ?></td>
                         <td><?php echo $row->nm_barang ?></td>
                         <td><?php echo $row->stok ?></td>
+                        <td><?php echo $row->stok_tidakdigunakan ?></td>
                         <td>
                             <a class="btn btn-primary" href="<?php echo site_url('barang/tambah_stok/' . $row->id_barang ) ?>">Tambah Stok</a>
                             <a class="btn btn-primary" href="<?php echo site_url('barang/riwayat_stok/' . $row->id_barang ) ?>">Riwayat Stok</a>
