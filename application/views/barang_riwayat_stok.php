@@ -16,22 +16,24 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col">Departemen</th>
             <th scope="col">Kode Barang</th>
             <th scope="col">Nama Barang</th>
-            <th scope="col">Departemen</th>
-
             <th scope="col">Jumlah</th>
-            <th scope="col">Tanggal</th>
+            <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($list_riwayat as $i => $row): ?>
             <tr>
-                <td scope="row"><?php echo 'BHP-' . str_pad($row->id_barang, 6, 0, STR_PAD_LEFT) ?></td>
-                <td><?php echo $row->nm_barang ?></td>
                 <td><?php echo $row->nm_dept ?></td>
+                <td scope="row"><?php echo 'PRCS-' . str_pad($row->id_barang, 6, 0, STR_PAD_LEFT) ?></td>
+                <td><?php echo $row->nm_barang ?></td>
                 <td><?php echo $row->jumlah ?></td>
-                <td><?php echo $row->tanggal ?></td>
+                <td>
+                    <a  class="btn btn-primary" href="" >Detail</a>
+                </td>
+
             </tr>
         <?php endforeach ?>
     </tbody>
