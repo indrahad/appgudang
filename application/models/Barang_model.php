@@ -82,7 +82,7 @@ class Barang_model extends CI_Model {
 		$this->db->insert('riwayat', $insert_riwayat);
 	}
 	function tampil_riwayat	($id_barang)	{
-		// $this->db->where('ambilbrng.id_barang', $id_barang);
+		$this->db->where('ambilbrng.id_barang', $id_barang);
 		$this->db->join('barang', 'ambilbrng.id_barang=barang.id_barang');
 		$this->db->join('dept', 'dept.id_dept=ambilbrng.id_dept');
 		$this->db->group_by('ambilbrng.id_dept, ambilbrng.id_barang');
